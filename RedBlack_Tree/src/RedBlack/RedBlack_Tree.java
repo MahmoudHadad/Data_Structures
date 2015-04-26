@@ -83,6 +83,7 @@ public class RedBlack_Tree {
 		// no uncle
 		if(iterator.getUncle() == null)
 		{
+			//System.out.println(iterator.value + " No uncle");
 			doRotation(iterator);
 		}
 		// uncle exists
@@ -117,13 +118,27 @@ public class RedBlack_Tree {
 			// left left 
 			if(iterator == iterator.parent.left)
 			{
-				
-				
+				//System.out.println("left left");
+				// swap colors
+				Color p = iterator.parent.color;
+				iterator.parent.color = iterator.parent.parent.color;
+				iterator.parent.parent.color = p;
+				// rotate right grand parent
+				rotateRight(iterator.parent.parent);
 			}
 			// left right
 			else
 			{
+				//System.out.println("left right");
+				// swap colors
+				rotateLeft(iterator.parent);
 				
+				// left left
+				Color p = iterator.parent.color;
+				iterator.parent.color = iterator.color;
+				iterator.color = p;
+				
+				rotateRight(iterator.parent);
 				
 			}
 			
@@ -132,14 +147,29 @@ public class RedBlack_Tree {
 		else{	
 			// right left 
 			if(iterator == iterator.parent.left)
-			{
+			{		
+				//System.out.println("right left");
+				// right rotate p
+				rotateRight(iterator.parent);
+				
+				Color p = iterator.parent.color;
+				iterator.parent.color = iterator.color;
+				iterator.color = p;
+				
+				rotateLeft(iterator.parent);
 				
 				
 			}
 			// right right
 			else
 			{
-				
+				//System.out.println("right right");
+				// swap colors
+				Color p = iterator.parent.color;
+				iterator.parent.color = iterator.parent.parent.color;
+				iterator.parent.parent.color = p;
+				// rotate right grand parent
+				rotateLeft(iterator.parent.parent);
 				
 			}
 
