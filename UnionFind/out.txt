@@ -1,0 +1,9 @@
+S1: 8 3 
+S2: 2 6 
+S3: 5 
+S4: 1 
+S5: 4 
+S1: 8 2 3 6 
+S2: 5 
+S3: 1 4 
+3 is in S1, representative=8
